@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sign page</title>
+<style>
+    
+body{
+  font-family: 'Open Sans', sans-serif;
+  background-size: 1000% 1000%;
+  animation: gradient 8s ease infinite;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #111;
+  text-align: center;
+  padding: 30px 30px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 30px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  width: 100%;
+  margin: 10px 0;
+  margin-bottom: 10px;
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+  border: #141E30;
+}
+.form-signin input[type="email"], input[type="password"] {
+  width: 100%;
+  margin: 10px 0;
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border: none;
+}
+
+.btn{
+  background-color: #141E30;;
+  color: white;
+  padding: 10px 10px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-size: 16px;
+}
+
+hr {  
+  height:2px;
+  border-width:0;
+  background-color: #141E30;
+  color: #141E30; 
+  margin-bottom: 25px;  
+}  
+
+</style>
+</head>
+<body>
+    <header style="width: 100%; display: flex; color: #141E30; margin-left: 40px; margin-top: 20px;">
+        <ul>
+            <li style="text-transform: uppercase; font-weight: 800; font-size: 20px;"><a href="" onclick="myFunction()">NFT-ADDRESS</a></li>
+            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+            <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+          </ul>
+</header>
+
+{% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %} {% for category, message in messages %} {% if category ==
+  'error' %}
+  <div class="alert alert-danger alter-dismissable fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% else %}
+  <div class="alert alert-success alter-dismissable fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+
+
+<div class="container">
+    <form class="form-signin" method="POST" action="/register">
+      <h2 class="form-signin-heading" style="color: #141E30; font-size: 35px; text-align: center;">Register</h2><hr>
+      <label for="inputUsername" class="sr-only">Username</label><br>
+      <input type="text" id="inputUsername" class="form-control" name = "username" placeholder="Enter username" required autofocus><br>
+      <label for="inputEmail" class="sr-only">Email address</label><br>
+      <input type="email" id="inputEmail" class="form-control" name = "email" placeholder="Enter email-address" required autofocus><br>
+      <label for="inputPassword" class="sr-only">Password</label><br>
+      <input type="password" id="inputPassword1" class="form-control"name = "password1" placeholder="Enter password" required><br>
+      <label for="inputPassword" class="sr-only">Password Confirm</label><br>
+      <input type="password" id="inputPassword2" class="form-control"name = "password2" placeholder="Confirm Password" required><br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>    </form>
+</div>
+
+<script>
+  function myFunction() {
+    alert("You cannot access the NFT website unless you have registered. \n Please register!");
+  }
+  </script>
+
+
+</body>
+</html>
